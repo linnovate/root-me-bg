@@ -1,0 +1,7 @@
+<div class="backgroundImage-example" ng-controller="BackgroundImageController">
+	 <div style="display:inline-block; min-height:290px;">
+      <uib-datepicker ng-model="imageToDate.date" class="well well-sm"></uib-datepicker>
+    </div>
+  <mean-upload file-dest="'/categories/'" ng-model="icon" upload-caption="Select Icon" upload-file-callback="saveImage(file)"></mean-upload>
+ 
+</div>

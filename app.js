@@ -15,6 +15,7 @@ import 'angular-ui-router';
 import 'angular-jwt';
 import 'angular-bootstrap/ui-bootstrap-tpls';
 
+
 window.$ = jQuery;
 
 angular.element(document).ready(function () {
@@ -37,8 +38,11 @@ function processModules(modules) {
 
     var req = require.context('./packages', true, /\/public\/(?!tests|assets|views)(.*)\.js$/);
     req.keys().map(req);
+    console.log('***************', req.keys());
     req = require.context('./node_modules', true, /\/meanio-(admin|system|users|circles)\/public\/(?!tests|assets|views)(.*)\.js$/);
     req.keys().map(req);
+    // req = require.context('./packages', true, /\/public\/(?!tests|assets|views)(.*)\.js$/);
+    // req.keys().map(req);
 
     angular.module('mean', packageModules);
 }
