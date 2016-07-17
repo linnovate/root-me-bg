@@ -1,13 +1,12 @@
 (function() {
     'use strict';
 
-    function BackgroundImage($http, $q) {
+    function BackgroundImage($http, $q, _) {
         return {
             name: 'background-image',
-            checkCircle: function(circle) {
+            getImagesForMonth: function(month) {
                 var deferred = $q.defer();
-
-                $http.get('/api/backgroundImage/example/' + circle).success(function(response) {
+                $http.post('/api/backgroundImage/example/imagesForMonth', {month: month}).success(function(response) {
                     deferred.resolve(response);
                 }).error(function(response) {
                     deferred.reject(response);

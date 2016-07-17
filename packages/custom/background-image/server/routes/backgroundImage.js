@@ -13,6 +13,11 @@
           res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
           next();
         });
+         app.post('/api/backgroundImage/example/imagesForMonth', function(req, res, next) {
+            next();
+            // res.send('Anyone can access this');
+
+        }, images.byMonth);
 
         app.post('/api/backgroundImage/example/image', function(req, res, next) {
             next();

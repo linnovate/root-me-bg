@@ -13,11 +13,28 @@ var mongoose = require('mongoose'),
   jwt = require('jsonwebtoken'); 
 
 
-
-
-
 module.exports = function() {
-    return {      
+    return {  
+        byMonth: function(req, res, next) {
+          var month = req.body;
+          ImageToDate.find( //query today up to tonight
+            {"date": {"$gte": new Date(2016, month.month, 1), "$lt": new Date(2016, month.month + 1, 1)}}, function(err, obj) {
+              if(err) {
+                return res.send('err', err);
+              }
+              console.log('ids', obj.map(function(o){ return mongoose.Types.ObjectId(o.imageId)}));
+              Images.find({_id : {
+                $in: obj.map(function(o){ return mongoose.Types.ObjectId(o.imageId)})
+              }}, function(err, obj) {
+                 if(err) {
+                  return res.send('err', err);
+                 }
+                 console.log('success', obj);
+                return res.send(obj);
+              });
+              
+            })
+        }, 
         create: function(req, res, next) {
             var data = req.body;
             data.date = new Date(data.date).setHours(0,0,0,0);

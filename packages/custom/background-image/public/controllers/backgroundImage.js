@@ -9,19 +9,24 @@
             name: 'background-image'
         };
         $scope.imageToDate = {};
-
-        $scope.checkCircle = function() {
-            BackgroundImage.checkCircle($stateParams.circle).then(function(response) {
+        $scope.imageToDate.date = new Date();
+        $scope.imagesByMonth = {};
+        function getImagesForMonth(month) {
+            BackgroundImage.getImagesForMonth(month).then(function(response) {
                 $scope.res = response;
-                $scope.resStatus = 'info';
+                angular.forEach($scope.res, function(value, key) {
+                     var date = new Date(value.forDate);
+                     var date_format = date.getFullYear() + '-'+ date.getDay() + '-' + date.getMonth();
+                     $scope.imagesByMonth[date_format] = value.src;
+                });
             }, function(error) {
                 $scope.res = error;
-                $scope.resStatus = 'danger';
+                console.log('err', $scope.res);
             });
         };
+        getImagesForMonth($scope.imageToDate.date.getMonth());
          $scope.saveImage = function(file) {
             $scope.imageToDate.src = file.src;
-            console.log('dt', $scope.imageToDate);
             BackgroundImage.saveImage($scope.imageToDate).then(function(response) {
                 $scope.res = response;
                 console.log('res', $scope.res);
@@ -32,6 +37,11 @@
                 $scope.resStatus = 'danger';
             });
         };
+        $scope.dateChanged = function() {
+            var date = new Date($scope.imageToDate.date);
+            $scope.currentDate = date.getFullYear() + '-'+ date.getDay() + '-' + date.getMonth();
+        }
+        $scope.dateChanged();
 
     }
 
