@@ -5,11 +5,9 @@
 <body data-ng-controller="StarterController" ng-cloak class="ng-cloak" ng-class="state">
     <div data-ng-include="'/meanStarter/views/system/header.html'" data-role="navigation"></div>
     <div data-ng-include="'/admin/views/index.html'"></div>
-    <section class="content">
-        <section class="container">
+    <div layout="row" layout-align="center center">
             {% block content %}{% endblock %}
-        </section>
-    </section>
+    </div>
     {% include '../includes/foot.html' %}
 </body>
 

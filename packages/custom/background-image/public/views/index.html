@@ -1,9 +1,9 @@
 <div class="backgroundImage-example" ng-controller="BackgroundImageController">
-	<div layout="row">
-  <div flex>
+	<div layout="row" layout-margin>
+  <div>
   	<md-datepicker ng-model="imageToDate.date" md-placeholder="Enter date" ng-change="dateChanged()"></md-datepicker>
   </div>
-  <div flex>
+  <div>
  <img class="image-for-date" ng-src="{{imagesByMonth[currentDate]}}" />
   </div>
   <div>
