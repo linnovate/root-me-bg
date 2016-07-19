@@ -22,14 +22,12 @@ module.exports = function() {
               if(err) {
                 return res.send('err', err);
               }
-              console.log('ids', obj.map(function(o){ return mongoose.Types.ObjectId(o.imageId)}));
               Images.find({_id : {
                 $in: obj.map(function(o){ return mongoose.Types.ObjectId(o.imageId)})
               }}, function(err, obj) {
                  if(err) {
                   return res.send('err', err);
                  }
-                 console.log('success', obj);
                 return res.send(obj);
               });
               
@@ -42,18 +40,20 @@ module.exports = function() {
             image.save(function(error, success) {
             ImageToDate.findOneAndUpdate({date: data.date}, {$set:{imageId:success._id}}, function(err, doc){
                   if(err){
-                      console.log("Something wrong when updating data!");
+                      res.send(err);
+                  }
+                  if(doc) {
+                    return res.send(doc);
                   }
 
                   if(!doc) {
-                    console.log('doc');
                     var imageToDate = new ImageToDate({date: data.date, imageId: success._id});
                       imageToDate.save(function(err, success) {
                          if(err) {
                           return res.send('err');
                          }
                          Images.find({}, function(err, obj) {
-                          console.log('obj', obj);
+                          return res.send(obj);
                          })
                       });
                   }

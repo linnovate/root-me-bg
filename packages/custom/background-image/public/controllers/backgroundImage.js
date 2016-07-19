@@ -29,6 +29,7 @@
             $scope.imageToDate.src = file.src;
             BackgroundImage.saveImage($scope.imageToDate).then(function(response) {
                 $scope.res = response;
+                getImagesForMonth($scope.imageToDate.date.getMonth());
                 console.log('res', $scope.res);
                 $scope.resStatus = 'info';
             }, function(error) {
