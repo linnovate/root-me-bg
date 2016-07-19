@@ -1,16 +1,18 @@
 'use strict';
 
-angular.module('mean.system').controller('HeaderController', ['$scope', '$rootScope', 'Menus', 'MeanUser', '$state',
-  function($scope, $rootScope, Menus, MeanUser, $state) {
+angular.module('mean.system').controller('HeaderController', ['$scope', '$rootScope', 'Menus', 'MeanUser', '$state','$mdSidenav', 'Global',
+  function($scope, $rootScope, Menus, MeanUser, $state, $mdSidenav, Global) {
     
     var vm = this;
-
     vm.menus = {};
     vm.hdrvars = {
       authenticated: MeanUser.loggedin,
       user: MeanUser.user, 
       isAdmin: MeanUser.isAdmin
     };
+
+
+    
 
     // Default hard coded menu items for main menu
     var defaultMainMenu = [];
@@ -45,6 +47,14 @@ angular.module('mean.system').controller('HeaderController', ['$scope', '$rootSc
 
     vm.logout = function(){
       MeanUser.logout();
+    };
+
+    vm.openMenu = function() {
+       $mdSidenav('left')
+          .toggle()
+          .then(function () {
+            console.log("toggle " + 'left' + " is done");
+          });
     };
 
     $rootScope.$on('logout', function() {

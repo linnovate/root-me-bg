@@ -122,11 +122,11 @@ gulp.task('watch', function() {
     interval: 500
   });
 
-  gulp.watch(paths.js, ['jshint']);
-  gulp.watch(paths.css, ['csslint']).on('change', plugins.livereload.changed);
-  gulp.watch(paths.less, ['less']);
-  gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.webpack, ['webpack:build-dev']);
+  // gulp.watch(paths.js, ['jshint']);
+  // gulp.watch(paths.css, ['csslint']).on('change', plugins.livereload.changed);
+  // gulp.watch(paths.less, ['less']);
+  // gulp.watch(paths.sass, ['sass']);
+  // gulp.watch(paths.webpack, ['webpack:build-dev']);
 });
 
 

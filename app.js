@@ -2,7 +2,7 @@
 
 import 'angular/angular-csp.css';
 import 'angular-ui-select/select.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import 'angular-material/angular-material.min.css';
 
 import jQuery from 'jquery';
@@ -14,7 +14,7 @@ import 'angular-resource';
 import 'angular-sanitize';
 import 'angular-ui-router';
 import 'angular-jwt';
-import 'angular-bootstrap/ui-bootstrap-tpls';
+// import 'angular-bootstrap/ui-bootstrap-tpls';
 import 'angular-material/angular-material.min.js';
 import 'angular-aria/angular-aria.min.js';
 import 'angular-animate/angular-animate.min.js';
@@ -32,7 +32,7 @@ angular.element(document).ready(function () {
 });
 
 function processModules(modules) {
-    var packageModules = ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.router', 'ui.select', 'ngSanitize', 'ngMaterial'], m, mn;
+    var packageModules = ['ngCookies', 'ngResource', 'ui.router', 'ui.select', 'ngSanitize', 'ngMaterial'], m, mn;
     for (var index in modules) {
         m = modules[index];
         mn = 'mean.' + m.name;
@@ -43,7 +43,7 @@ function processModules(modules) {
     var req = require.context('./packages', true, /\/public\/(?!tests|assets|views)(.*)\.js$/);
     req.keys().map(req);
     console.log('***************', req.keys());
-    req = require.context('./node_modules', true, /\/meanio-(admin|system|users|circles)\/public\/(?!tests|assets|views)(.*)\.js$/);
+    req = require.context('./node_modules', true, /\/meanio-(admin|system|users|circles|articles)\/public\/(?!tests|assets|views)(.*)\.js$/);
     req.keys().map(req);
     // req = require.context('./packages', true, /\/public\/(?!tests|assets|views)(.*)\.js$/);
     // req.keys().map(req);
