@@ -51,10 +51,7 @@ angular.module('mean.system').controller('HeaderController', ['$scope', '$rootSc
 
     vm.openMenu = function() {
        $mdSidenav('left')
-          .toggle()
-          .then(function () {
-            console.log("toggle " + 'left' + " is done");
-          });
+          .toggle();
     };
 
     $rootScope.$on('logout', function() {

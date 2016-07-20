@@ -13,6 +13,9 @@
     font-weight: bold;
     font-style: normal;
 }
+.mainSection {
+  margin-top: 5%;
+}
 
 .welcome.container-fluid {
   margin:18px;

@@ -4,7 +4,7 @@
   	<md-datepicker ng-model="imageToDate.date" md-placeholder="Enter date" ng-change="dateChanged()"></md-datepicker>
   </div>
   <div>
- <img class="image-for-date" ng-src="{{imagesByMonth[currentDate]}}" />
+ <img class="image-for-date" ng-src="{{imagesByMonth[currentDate] ||  'http://www.cse.iitd.ernet.in/projects/data/default.png'}}" />
   </div>
   <div>
   	 <mean-upload file-dest="'/categories/'" ng-model="icon" upload-caption="Select Icon" upload-file-callback="saveImage(file)"></mean-upload>
